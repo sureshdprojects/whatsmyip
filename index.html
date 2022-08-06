@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Know your Ip</title>
+	<script 
+        src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+	</script>
+	<script>
+	    $.get("https://ipinfo.io", function(response) {
+                $("#ip").html(response.ip);
+		}, "json")
+	</script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+        <div class="header">
+            Know your IP
+        </div>
+        <div class="ip-container">
+            <div id="ip" data-value="1"></div>
+            <button onclick="copyIp()">copy</button>
+        </div>
+        <script>
+            function copyIp() {
+                let copyText = document.getElementById("ip").innerText;
+                navigator.clipboard.writeText(copyText);
+                alert("ip copied " + copyText);
+            }
+        </script>
+</body>
+</html>
